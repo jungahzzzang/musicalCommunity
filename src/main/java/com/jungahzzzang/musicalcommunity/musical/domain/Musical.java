@@ -1,10 +1,9 @@
-package com.jungahzzzang.musicalcommunity.domain;
+package com.jungahzzzang.musicalcommunity.musical.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Builder
@@ -26,5 +25,5 @@ public class Musical {
     private String fcltynm; //공연장명
     private String poster;  //포스터 경로
 
-    private String prfstate;    //공연 중 상태태
+    private String prfstate;    //공연 중 상태
 }

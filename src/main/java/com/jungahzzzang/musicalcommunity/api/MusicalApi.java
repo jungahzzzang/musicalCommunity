@@ -1,9 +1,7 @@
 package com.jungahzzzang.musicalcommunity.api;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jungahzzzang.musicalcommunity.domain.Musical;
-import com.jungahzzzang.musicalcommunity.repository.MusicalRepository;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.json.XML;

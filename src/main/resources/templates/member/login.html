@@ -2,13 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <title>로그인 페이지</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css"
           integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
-
-    <title>로그인 페이지</title>
 </head>
 <body>
-<form th:action="musical/loginProcess" th:method="POST">
+<form action="musical/loginProcess" method="POST">
 <div class="form-group">
     <label class="form-label mt-4">Floating labels</label>
     <div class="form-floating mb-3">
@@ -19,8 +18,10 @@
         <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
         <label for="floatingPassword">Password</label>
     </div>
-    <a href="https://kauth.kakao.com/oauth/authorize?client_id=97b71fb1173796d82ab79fcc59b40a7b&redirect_uri=http://localhost:8083/auth/kakao/callback&response_type=code"><img src="/static/image/kakao_login_button.png"></a>
-    <a href="/oauth2/authorization/naver"><img src="/static/image/naver_login_button.png"></a>
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=97b71fb1173796d82ab79fcc59b40a7b&redirect_uri
+    =http://localhost:8083/auth/kakao/callback&response_type=code">
+        <img src="/image/kakao_login_button.png"></a>
+    <a href="/oauth2/authorization/naver"><img src="/image/naver_login_button.png"></a>
 </div>
 </form>
 </body>

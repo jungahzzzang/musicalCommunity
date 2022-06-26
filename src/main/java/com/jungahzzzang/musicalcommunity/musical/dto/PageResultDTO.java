@@ -30,7 +30,7 @@ public class PageResultDTO<DTO,EN> {
     private List<Integer> pageList;
 
     public PageResultDTO(Page<EN> result){
-        dtoList = (List<DTO>) result.stream().toList();
+        dtoList = (List<DTO>) result.stream().collect(Collectors.toList());
         totalPage = result.getTotalPages();
         makePageList(result.getPageable());
     }

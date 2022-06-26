@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>작품 목록</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css"
+          integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
+</head>
+<body>
+<form action="musical/list" method="get">
+    <input type="hidden" name="page" value="1">
+</form>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">MusicalCommunity</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">게시판</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/member/login">로그인</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">회원가입</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+<table class="table table-hover">
+    <thead>
+    <tr class="table-primary">
+        <th scope="col">#</th>
+        <th scope="col">공연명</th>
+        <th scope="col">공연장</th>
+        <th scope="col">포스터</th>
+        <th scope="col">공연 상태</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dto : ${result.dtoList}" class="table-light">
+        <th scope="row">
+            <!--                    <a th:href="@{/musical/read(mcode = ${dto.mcode},page=${result.page})}">-->
+            [[${dto.mcode}]]
+            <!--                    </a>-->
+        </th>
+        <td>[[${dto.prfnm}]]</td>
+        <td>[[${dto.fcltynm}]]</td>
+        <td><img th:src="${dto.poster}" style="width: 100px;"></td>
+        <td>[[${dto.prfstate}]]</td>
+    </tr>
+    </tbody>
+</table>
+
+<ul class="pagination h-100 justify-content-center align-items-center">
+
+    <li class="page-item " th:if="${result.prev}">
+        <a class="page-link" th:href="@{musical/list(page= ${result.start -1})}" tabindex="-1">Previous</a>
+    </li>
+
+    <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
+        <a class="page-link" th:href="@{musical/list(page = ${page})}">
+            [[${page}]]
+        </a>
+    </li>
+
+    <li class="page-item" th:if="${result.next}">
+        <a class="page-link" th:href="@{musical/list(page= ${result.end + 1} )}">Next</a>
+    </li>
+</ul>
+</body>
+    <script>
+
+    </script>
+</html>

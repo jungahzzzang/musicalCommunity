@@ -1,6 +1,6 @@
 package com.jungahzzzang.musicalcommunity.config;
 
-import com.jungahzzzang.musicalcommunity.service.MusicalService;
+import com.jungahzzzang.musicalcommunity.musical.service.MusicalService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;

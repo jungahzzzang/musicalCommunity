@@ -1,7 +1,9 @@
 package com.jungahzzzang.musicalcommunity.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jungahzzzang.musicalcommunity.domain.Musical;
+import com.jungahzzzang.musicalcommunity.musical.domain.Musical;
+import com.jungahzzzang.musicalcommunity.musical.domain.Musical;
+import com.jungahzzzang.musicalcommunity.musical.repository.MusicalRepository;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.json.XML;
@@ -45,10 +47,10 @@ public class MusicalApi {
 
             String urlStr = "http://www.kopis.or.kr/openApi/restful/pblprfr?service="+
                     apiKey+
-                    "&stdate="+stdate+
-                    "&eddate="+eddate+
-                    "shcate=AAAB"+
-                    "&signgucode=11"+
+                    "&stdate="+stdate+  /* 시작 날짜 */
+                    "&eddate="+eddate+  /* 종료 날짜 */
+                    "shcate=AAAB"+  /* 장르 뮤지컬 */
+                    "&signgucode=11"+   /* 지역 서울 */
                     "&rows=10"+
                     "&cpage=1";
 
@@ -84,10 +86,6 @@ public class MusicalApi {
                 //JSON object -> Java Object(Entity) 변환
                 Musical musical = objectMapper.readValue(dailyMusical.toString(),Musical.class);
                 //insert
-                musical.setMt20id("mt20id");
-                musical.setFcltynm("fcltynm");
-                musical.setPrfnm("prfnm");
-                musical.setPoster("poster");
                 musicalRepository.save(musical);
             }
 

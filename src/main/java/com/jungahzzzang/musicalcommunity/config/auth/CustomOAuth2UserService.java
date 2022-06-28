@@ -2,8 +2,8 @@ package com.jungahzzzang.musicalcommunity.config.auth;
 
 import com.jungahzzzang.musicalcommunity.config.auth.dto.OAuthAttributes;
 import com.jungahzzzang.musicalcommunity.config.auth.dto.SessionUser;
-import com.jungahzzzang.musicalcommunity.member.MemberRepository;
 import com.jungahzzzang.musicalcommunity.member.domain.Member;
+import com.jungahzzzang.musicalcommunity.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css"
+          integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
+</head>
+<body>
+<style>
+    .form-control{
+        width: 300px;
+    }
+</style>
+
+<div class="form-group">
+    <form th:action="@{/member/joinProcess}" method="post">
+        <label class="form-label mt-4">회원가입</label>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingName" placeholder="name@example.com">
+            <!--      <label for="floatingInput">Email address</label>-->
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingEmail" placeholder="name@example.com">
+            <!--      <label for="floatingPassword">Password</label>-->
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <!--      <label for="floatingPassword">Password</label>-->
+        </div>
+        <button type="submit" class="btn btn-primary">회원가입</button>
+    </form>
+</div>
+
+</body>
+</html>

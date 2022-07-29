@@ -12,19 +12,19 @@ public class BatchScheduler {
 //    private MusicalRepository musicalRepository;
 //    private OpenDataApi openDataApi;
 
-    //@Scheduled(cron = "0 0 3 * * 6") //ë§¤ì£¼ í† ìš”ì¼ ìƒˆë²½ 3ì‹œì— ìë™ìœ¼ë¡œ ì‹œì‘í•˜ëŠ” ìŠ¤ì¼€ì¤„ëŸ¬
+    //@Scheduled(cron = "0 0 3 * * 6") //ë§¤ì£¼ ?† ?š”?¼ ?ƒˆë²? 3?‹œ?— ??™?œ¼ë¡? ?‹œ?‘?•˜?Š” ?Š¤ì¼?ì¤„ëŸ¬
 //    @Scheduled(fixedDelay = 1000)
 //    public void scheduleTask() {
-//        1~10 Page ê°€ì ¸ì˜¤ê¸°
+//        1~10 Page ê°?? ¸?˜¤ê¸?
 //        for(int i=1;i<=10;i++){
 //            String rowsPage = "10";
 //            String pageNum = String.valueOf(i);
 //
 //            MusicalInfoResponse musicalInfos = openDataApi.createDetailInfo();
 //            log.info("===================================================");
-//            log.info("ë®¤ì§€ì»¬ ìƒì„¸ ì •ë³´ Page");
+//            log.info("ë®¤ì?ì»? ?ƒ?„¸ ? •ë³? Page");
 //
-//            //DB ì €ì¥ ì˜ˆì‹œ
+//            //DB ???¥ ?˜ˆ?‹œ
 //          musicalInfos.getBody().getItems().forEach(item -> {
 //            log.info("Current Item : {}", item.toString());
 //            log.info("Save : {}",

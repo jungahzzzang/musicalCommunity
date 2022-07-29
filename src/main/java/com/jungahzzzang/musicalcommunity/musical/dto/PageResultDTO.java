@@ -12,21 +12,21 @@ import java.util.stream.IntStream;
 @Data
 public class PageResultDTO<DTO,EN> {
 
-    //DTO ë¦¬ìŠ¤íŠ¸
+    //DTO ë¦¬ìŠ¤?Š¸
     private List<DTO> dtoList;
 
-    //ì´ í˜ì´ì§€ ë²ˆí˜¸
+    //ì´? ?˜?´ì§? ë²ˆí˜¸
     private int totalPage;
 
-    //í˜„ì¬ í˜ì´ì§€ ë²ˆí˜¸
+    //?˜„?¬ ?˜?´ì§? ë²ˆí˜¸
     private int page;
-    //ëª©ë¡ ì‚¬ì´ì¦ˆ
+    //ëª©ë¡ ?‚¬?´ì¦?
     private int size;
-    //ì‹œì‘ í˜ì´ì§€ ë²ˆí˜¸,ë í˜ì´ì§€ ë²ˆí˜¸
+    //?‹œ?‘ ?˜?´ì§? ë²ˆí˜¸,? ?˜?´ì§? ë²ˆí˜¸
     private int start, end;
-    //ì´ì „,ë‹¤ìŒ
+    //?´? „,?‹¤?Œ
     private boolean prev, next;
-    //í˜ì´ì§€ ë²ˆí˜¸ ëª©ë¡
+    //?˜?´ì§? ë²ˆí˜¸ ëª©ë¡
     private List<Integer> pageList;
 
     public PageResultDTO(Page<EN> result){
@@ -36,7 +36,7 @@ public class PageResultDTO<DTO,EN> {
     }
 
     private void makePageList(Pageable pageable){
-        this.page=pageable.getPageNumber()+1;   //0ë¶€í„° ì‹œì‘í•˜ë¯€ë¡œ
+        this.page=pageable.getPageNumber()+1;   //0ë¶??„° ?‹œ?‘?•˜ë¯?ë¡?
         this.size=pageable.getPageSize();
 
         //temp end page

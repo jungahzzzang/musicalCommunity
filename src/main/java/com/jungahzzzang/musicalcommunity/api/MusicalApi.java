@@ -2,7 +2,6 @@ package com.jungahzzzang.musicalcommunity.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jungahzzzang.musicalcommunity.musical.domain.Musical;
-import com.jungahzzzang.musicalcommunity.musical.domain.Musical;
 import com.jungahzzzang.musicalcommunity.musical.repository.MusicalRepository;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
@@ -36,7 +35,7 @@ public class MusicalApi {
         String jsonPrintStr = null;
 
         try {
-            //3개월 기간 설정
+            //3개월 기간 ?��?��
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
             Date currentDate = new Date();
             Calendar cal = Calendar.getInstance();
@@ -47,10 +46,10 @@ public class MusicalApi {
 
             String urlStr = "http://www.kopis.or.kr/openApi/restful/pblprfr?service="+
                     apiKey+
-                    "&stdate="+stdate+  /* 시작 날짜 */
-                    "&eddate="+eddate+  /* 종료 날짜 */
-                    "shcate=AAAB"+  /* 장르 뮤지컬 */
-                    "&signgucode=11"+   /* 지역 서울 */
+                    "&stdate="+stdate+  /* ?��?�� ?���? */
+                    "&eddate="+eddate+  /* 종료 ?���? */
+                    "shcate=AAAB"+  /* ?���? 뮤�?�? */
+                    "&signgucode=11"+   /* �??�� ?��?�� */
                     "&rows=10"+
                     "&cpage=1";
 
@@ -59,7 +58,7 @@ public class MusicalApi {
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.connect();
 
-            /* XML to JSON 파싱 */
+            /* XML to JSON ?��?�� */
             BufferedInputStream bis = new BufferedInputStream(urlConnection.getInputStream());
             BufferedReader br = new BufferedReader(new InputStreamReader(bis,"UTF-8"));
             String returnLine;
@@ -83,7 +82,7 @@ public class MusicalApi {
             JSONArray parseMusicalList = (JSONArray) parseResult.get("db");
             for(int i=0;i<parseMusicalList.size();i++){
                 org.json.simple.JSONObject dailyMusical = (org.json.simple.JSONObject) parseMusicalList.get(i);
-                //JSON object -> Java Object(Entity) 변환
+                //JSON object -> Java Object(Entity) �??��
                 Musical musical = objectMapper.readValue(dailyMusical.toString(),Musical.class);
                 //insert
                 musicalRepository.save(musical);

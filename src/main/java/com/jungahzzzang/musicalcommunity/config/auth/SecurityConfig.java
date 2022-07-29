@@ -1,6 +1,8 @@
 package com.jungahzzzang.musicalcommunity.config.auth;
 
 import com.jungahzzzang.musicalcommunity.config.auth.CustomOAuth2UserService;
+import com.jungahzzzang.musicalcommunity.member.domain.Role;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,15 +19,14 @@ public class SecurityConfig extends org.springframework.security.config.annotati
             http.csrf().disable()
                     .headers().frameOptions().disable()
                     .and()
-//                    .authorizeRequests(
-//                            authz->authz.antMatchers("/","/css/**","/js/**")
-//                                    .permitAll()
-//                                    .antMatchers("/musical/**").hasRole(Role.MEMBER.name())
-//                                    .anyRequest()
-//                                    .authenticated().and()
-//                    )
+					/*
+					 * .authorizeRequests( authz->authz.antMatchers("/","/css/**","/js/**")
+					 * .permitAll() .antMatchers("/member/login").permitAll()
+					 * .antMatchers("/member/**").hasRole(Role.MEMBER.name()) .anyRequest()
+					 * .authenticated().and() )
+					 */
                     .formLogin()
-                    .loginPage("/login.html")
+                    .loginPage("/member/login")
                     .defaultSuccessUrl("/index.html",true)
                     .and()
                     .logout()

@@ -21,18 +21,13 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home
-                        <span class="visually-hidden">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">게시판</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/member/login">로그인</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">회원가입</a>
+                    <a class="nav-link" href="/member/join">회원가입</a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -57,9 +52,9 @@
     <tbody>
     <tr th:each="dto : ${result.dtoList}" class="table-light">
         <th scope="row">
-            <!--                    <a th:href="@{/musical/read(mcode = ${dto.mcode},page=${result.page})}">-->
+           <a th:href="@{/musical/read(mcode = ${dto.mcode},page=${result.page})}">
             [[${dto.mcode}]]
-            <!--                    </a>-->
+           </a>
         </th>
         <td>[[${dto.prfnm}]]</td>
         <td>[[${dto.fcltynm}]]</td>
@@ -72,17 +67,17 @@
 <ul class="pagination h-100 justify-content-center align-items-center">
 
     <li class="page-item " th:if="${result.prev}">
-        <a class="page-link" th:href="@{musical/list(page= ${result.start -1})}" tabindex="-1">Previous</a>
+        <a class="page-link" th:href="@{/musical/list(page= ${result.start -1})}" tabindex="-1">Previous</a>
     </li>
 
     <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
-        <a class="page-link" th:href="@{musical/list(page = ${page})}">
+        <a class="page-link" th:href="@{/musical/list(page = ${page})}">
             [[${page}]]
         </a>
     </li>
 
     <li class="page-item" th:if="${result.next}">
-        <a class="page-link" th:href="@{musical/list(page= ${result.end + 1} )}">Next</a>
+        <a class="page-link" th:href="@{/musical/list(page= ${result.end + 1} )}">Next</a>
     </li>
 </ul>
 </body>

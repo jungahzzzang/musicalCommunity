@@ -30,9 +30,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuth2UserService delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
-        //í˜„ìž¬ ë¡œê·¸ì¸ ì§„í–‰ Wì¤‘ì¸ ì„œë¹„ìŠ¤ë¥¼ êµ¬ë¶„í•˜ëŠ” ì½”ë“œ(ì¶”í›„ ë„¤ì´ë²„ ë¡œê·¸ì¸ ì¶”ê°€ ì‹œ ë„¤ì´ë²„ì¸ì§€ êµ¬ê¸€ì¸ì§€ êµ¬ë¶„í•˜ê¸° ìœ„í•´ ì‚¬ìš©)
+        //?˜„?ž¬ ë¡œê·¸?¸ ì§„í–‰ Wì¤‘ì¸ ?„œë¹„ìŠ¤ë¥? êµ¬ë¶„?•˜?Š” ì½”ë“œ(ì¶”í›„ ?„¤?´ë²? ë¡œê·¸?¸ ì¶”ê? ?‹œ ?„¤?´ë²„ì¸ì§? êµ¬ê??¸ì§? êµ¬ë¶„?•˜ê¸? ?œ„?•´ ?‚¬?š©)
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        //PKì™€ ê°™ì€ ì˜ë¯¸
+        //PK?? ê°™ì? ?˜ë¯?
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 

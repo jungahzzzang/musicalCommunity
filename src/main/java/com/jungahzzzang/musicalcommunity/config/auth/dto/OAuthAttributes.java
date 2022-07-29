@@ -23,7 +23,7 @@ public class OAuthAttributes {
         this.email = email;
     }
 
-    //OAuth2Userì—ì„œ ë°˜í™˜í•˜ëŠ” ì‚¬ìš©ì ì •ë³´ê°€ Mapì´ê¸° ë•Œë¬¸ì— ê°’ í•˜ë‚˜í•˜ë‚˜ ë³€í™˜ í•„ìš”.
+    //OAuth2User?—?„œ ë°˜í™˜?•˜?Š” ?‚¬?š©? ? •ë³´ê? Map?´ê¸? ?•Œë¬¸ì— ê°? ?•˜?‚˜?•˜?‚˜ ë³??™˜ ?•„?š”.
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
         if("naver".equals(registrationId)){
             return ofNaver("id",attributes);
@@ -57,7 +57,7 @@ public class OAuthAttributes {
 
     public Member toEntity() {
         return Member.builder()
-                .name(name).email(email).role(Role.GUEST)   //ê°€ì… ì‹œ ê¸°ë³¸ ê¶Œí•œì„ GUESTë¡œ ì£¼ê² ë‹¤.
+                .name(name).email(email).role(Role.GUEST)   //ê°??… ?‹œ ê¸°ë³¸ ê¶Œí•œ?„ GUESTë¡? ì£¼ê² ?‹¤.
                 .build();
     }
 }

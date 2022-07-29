@@ -7,9 +7,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum Role {
 
-    //μ¤ν”„λ§ μ‹νλ¦¬ν‹°μ—μ„λ” κ¶ν• μ½”λ“μ— ν•­μƒ ROLE_μ΄ μ•μ— μμ–΄μ•Όλ§ ν•λ‹¤.
-    GUEST("ROLE_GUEST","μ†λ‹"),
-    MEMBER("ROLE_MEMBER","νμ›");
+    //?¤?”„λ§? ?‹?λ¦¬ν‹°?—?„?” κ¶ν• μ½”λ“?— ?•­?ƒ ROLE_?΄ ?•?— ??–΄?•Όλ§? ?•?‹¤.
+    GUEST("ROLE_GUEST","?†?‹"),
+    MEMBER("ROLE_MEMBER","??›");
 
     private final String key;
     private final String title;

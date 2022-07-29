@@ -10,9 +10,14 @@ import java.util.Map;
 
 
 public interface MusicalService {
+	
     public void insertMusical();
-
+    
+    //목록 처리
     public PageResultDTO<MusicalDTO,Object[]> getList(PageRequestDTO requestDTO);
+    
+    //조회 처리
+    MusicalDTO getMusical(Long mcode);
 
     default MusicalDTO entitiesToDTO(Musical musical){
         MusicalDTO musicalDTO = MusicalDTO.builder()

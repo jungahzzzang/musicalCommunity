@@ -23,6 +23,6 @@ public class PageRequestDTO<B,T> {
     }
 
     public Pageable getPageable(Sort sort){
-        return PageRequest.of(page-1,size,sort);    //í˜ì´ì§€ ë²ˆí˜¸ê°€ 0ë¶€í„° ì‹œì‘í•˜ë¯€ë¡œ 1í˜ì´ì§€ì˜ ê²½ìš° 0ì´ ë  ìˆ˜ ìˆë„ë¡ page-1
+        return PageRequest.of(page-1,size,sort);    //?˜?´ì§? ë²ˆí˜¸ê°? 0ë¶??„° ?‹œ?‘?•˜ë¯?ë¡? 1?˜?´ì§??˜ ê²½ìš° 0?´ ?  ?ˆ˜ ?ˆ?„ë¡? page-1
     }
 }

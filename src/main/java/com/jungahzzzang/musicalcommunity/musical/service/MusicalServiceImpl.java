@@ -8,6 +8,9 @@ import com.jungahzzzang.musicalcommunity.musical.dto.PageResultDTO;
 import com.jungahzzzang.musicalcommunity.musical.repository.MusicalRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -33,4 +36,15 @@ public class MusicalServiceImpl implements  MusicalService{
 
         return new PageResultDTO<>(result);
     }
+
+	@Override
+	public MusicalDTO getMusical(Long mcode) {
+		
+		
+		List<Object[]> result = musicalRepository.getMusicalInfo(mcode);
+		
+		Musical musical = (Musical) result.get(0)[0];	//Musical 엔티티는 가장 앞에 존재 - 모든 Row가 동일한 값
+		
+		return entitiesToDTO(musical);
+	}
 }

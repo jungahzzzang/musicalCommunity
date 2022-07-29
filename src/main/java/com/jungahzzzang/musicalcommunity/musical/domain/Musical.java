@@ -20,10 +20,10 @@ public class Musical {
     @Column(name = "mcode")
     private Long mcode;
 
-    private String mt20id;  //ë®¤ì§€ì»¬ì½”ë“œ
-    private String prfnm;   //ê³µì—°ëª…
-    private String fcltynm; //ê³µì—°ì¥ëª…
-    private String poster;  //í¬ìŠ¤í„° ê²½ë¡œ
+    private String mt20id;  //ë®¤ì?ì»¬ì½”?“œ
+    private String prfnm;   //ê³µì—°ëª?
+    private String fcltynm; //ê³µì—°?¥ëª?
+    private String poster;  //?¬?Š¤?„° ê²½ë¡œ
 
-    private String prfstate;    //ê³µì—° ì¤‘ ìƒíƒœ
+    private String prfstate;    //ê³µì—° ì¤? ?ƒ?ƒœ
 }

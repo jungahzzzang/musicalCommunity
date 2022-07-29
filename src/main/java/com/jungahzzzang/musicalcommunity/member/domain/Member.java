@@ -18,6 +18,9 @@ public class Member {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false, length = 100)
+    private String password;
+    
     @Column(nullable = false)
     private String email;
 
@@ -26,10 +29,11 @@ public class Member {
     private Role role;
 
     @Builder
-    public Member(Long mberId, String name, String email, Role role){
+    public Member(Long mberId, String name, String email, String password, Role role){
         this.mberId = mberId;
         this.name = name;
         this.email = email;
+        this.password=password;
         this.role = role;
     }
 

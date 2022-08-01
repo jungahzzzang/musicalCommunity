@@ -3,12 +3,14 @@ package com.jungahzzzang.musicalcommunity.member.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
 @Entity
+@Setter
 public class Member {
 
     @Id

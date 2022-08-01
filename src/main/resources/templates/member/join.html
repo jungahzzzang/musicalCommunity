@@ -17,11 +17,15 @@
     <form th:action="@{/member/joinProcess}" method="post">
         <label class="form-label mt-4">회원가입</label>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingName" placeholder="name@example.com">
+            <input type="text" class="form-control" id="name" placeholder="name@example.com">
+            <!--      <label for="floatingInput">Email address</label>-->
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" placeholder="name@example.com">
             <!--      <label for="floatingInput">Email address</label>-->
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingEmail" placeholder="password">
+            <input type="password" class="form-control" id="password" placeholder="password">
             <!--      <label for="floatingPassword">Password</label>-->
         </div>
 <!--         <div class="form-floating">

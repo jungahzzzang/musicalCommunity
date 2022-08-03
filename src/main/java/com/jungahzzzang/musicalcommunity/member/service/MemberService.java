@@ -12,7 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jungahzzzang.musicalcommunity.config.auth.CustomMemberDetails;
 import com.jungahzzzang.musicalcommunity.member.domain.Member;
+import com.jungahzzzang.musicalcommunity.member.domain.Role;
 import com.jungahzzzang.musicalcommunity.member.dto.MemberDTO;
 import com.jungahzzzang.musicalcommunity.member.repository.MemberRepository;
 
@@ -29,17 +31,32 @@ public class MemberService implements UserDetailsService {
 	private final BCryptPasswordEncoder encoder;
 
 	@Transactional
-	public Long join(MemberDTO dto) {
+	public int join(Member member) {
 		//BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
 		//비밀번호 암호화
-		String hashPw = encoder.encode(dto.getPassword());
+		//String hashPw = encoder.encode(dto.getPassword());
 		
-		Member member = dto.dtoToEntity();
-		member.setPassword(hashPw);
-		log.info("DB에 회원 저장 성공");
+		//Member member = dto.dtoToEntity();
+		//member.setPassword(hashPw);
+		//log.info("DB에 회원 저장 성공");
 		
-		return memberRepository.save(member).getMberId();
+		String rawPassword = member.getPassword();
+		String encPassword = encoder.encode(rawPassword);
+		
+		member.setPassword(encPassword);
+		member.setRole(Role.USER);
+		memberRepository.save(member);
+		
+		try {
+			memberRepository.save(member);
+			return 1;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("MemberService : 회원가입() : "+e.getMessage());
+		}
+		
+		return -1;
 	}
 	
 	//name이 DB에 있는지 확인
@@ -54,7 +71,7 @@ public class MemberService implements UserDetailsService {
 		//session.setAttribute("member", new MemberSessionDTO(member));
 			
 		//시큐리티 세션에 정보 저장
-		return new CustomUserDetails(member);
+		return new CustomMemberDetails(member);
 	}
 
 }

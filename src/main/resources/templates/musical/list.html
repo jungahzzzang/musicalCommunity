@@ -1,51 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>작품 목록</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css"
-          integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
+	<header th:replace="/fragments/header.html :: headerFragment"></header>
+    <title>공연 목록</title>
 </head>
 <body>
+<nav th:replace="/fragments/nav.html :: navFragment"></nav>
 <form action="musical/list" method="get">
     <input type="hidden" name="page" value="1">
 </form>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">MusicalCommunity</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">게시판</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/member/login">로그인</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/member/join">회원가입</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
-
-
 <table class="table table-hover">
     <thead>
-    <tr class="table-primary">
+    <tr class="table-secondary">
         <th scope="col">#</th>
         <th scope="col">공연명</th>
         <th scope="col">공연장</th>
-        <th scope="col">포스터</th>
         <th scope="col">공연 상태</th>
     </tr>
     </thead>
@@ -58,7 +28,6 @@
         </th>
         <td>[[${dto.prfnm}]]</td>
         <td>[[${dto.fcltynm}]]</td>
-        <td><img th:src="${dto.poster}" style="width: 100px;"></td>
         <td>[[${dto.prfstate}]]</td>
     </tr>
     </tbody>
@@ -81,6 +50,7 @@
     </li>
 </ul>
 </body>
+<footer th:replace="/fragments/footer.html :: footerFragment"></footer>
     <script>
 
     </script>

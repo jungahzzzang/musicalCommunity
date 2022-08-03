@@ -23,7 +23,7 @@ public class OAuthAttributes {
         this.email = email;
     }
 
-    //OAuth2User?—?„œ ë°˜í™˜?•˜?Š” ?‚¬?š©? ? •ë³´ê? Map?´ê¸? ?•Œë¬¸ì— ê°? ?•˜?‚˜?•˜?‚˜ ë³??™˜ ?•„?š”.
+    //OAuth2User?ï¿½ï¿½?ï¿½ï¿½ ë°˜í™˜?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ë³´ï¿½? Map?ï¿½ï¿½ï¿½? ?ï¿½ï¿½ë¬¸ì— ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ï¿½??ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½.
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
         if("naver".equals(registrationId)){
             return ofNaver("id",attributes);
@@ -57,7 +57,7 @@ public class OAuthAttributes {
 
     public Member toEntity() {
         return Member.builder()
-                .name(name).email(email).role(Role.GUEST)   //ê°??… ?‹œ ê¸°ë³¸ ê¶Œí•œ?„ GUESTë¡? ì£¼ê² ?‹¤.
+                .name(name).email(email).role(Role.USER)   //ï¿½??ï¿½ï¿½ ?ï¿½ï¿½ ê¸°ë³¸ ê¶Œí•œ?ï¿½ï¿½ GUESTï¿½? ì£¼ê² ?ï¿½ï¿½.
                 .build();
     }
 }

@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <header th:replace="/fragments/header.html :: headerFragment"></header>
     <title>회원가입</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css"
-          integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
 </head>
 <body>
 <style>
+	.form-group{
+            width: 430px;
+            margin: 0 auto;
+        }
     .form-control{
         width: 300px;
     }
 </style>
 
 <div class="form-group">
-    <form th:action="@{/member/joinProcess}" method="post">
         <label class="form-label mt-4">회원가입</label>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="name" placeholder="name@example.com">
@@ -32,9 +34,48 @@
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                  <label for="floatingPassword">Password</label>
         </div> -->
-        <button type="submit" class="btn btn-primary">회원가입</button>
-    </form>
+        <button class="btn btn-primary" id="btn-save">회원가입</button>
 </div>
-
 </body>
+
+<footer th:replace="/fragments/footer.html :: footerFragment"></footer>
+
+<script>
+
+    	let index = {
+    		init: function(){
+    			$("#btn-save").on("click",()=>{
+    				this.save();
+    			});
+    		},
+    		
+    		save: function(){
+    			let data = {
+    				name: $("#name").val(),
+    				password: $("#password").val(),
+    				email: $("#email").val(),
+    			};
+    			
+    			$.ajax({
+    				type: "POST",
+    				url: "/auth/joinProcess",
+    				data: JSON.stringify(data),
+    				contentType: "application/json; charset=utf-8",
+    				dataType: "json"
+    			}).done(function(resp){
+    				if(resp.status === 500){
+    					alert("회원가입에 실패하였습니다.");
+    				}else{
+    					alert("회원가입이 완료되었습니다.");
+    					location.href="/musical/";
+    				}
+    			}).fail(function(error){
+    				alert(JSON.stringify(error));
+    			});
+    		}
+    	}
+    	
+    	index.init();
+    </script>
+
 </html>

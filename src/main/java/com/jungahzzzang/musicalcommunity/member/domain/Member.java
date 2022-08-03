@@ -5,7 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.security.Timestamp;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Getter
 @NoArgsConstructor
@@ -38,8 +42,11 @@ public class Member {
         this.password=password;
         this.role = role;
     }
-
-    public String getRoleKey(){
-        return this.role.getKey();
-    }
+    
+   
 }
+
+	/*
+	 * public String getRoleKey(){ return this.role.getKey(); }
+	 */
+

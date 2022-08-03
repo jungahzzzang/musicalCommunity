@@ -2,9 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <header th:replace="/fragments/header.html :: headerFragment"></header>
     <title>로그인 페이지</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css"
-          integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
     <style>
         .form-group{
             width: 430px;
@@ -19,7 +18,7 @@
     </style>
 </head>
 <body>
-<form action="musical/loginProcess" method="POST">
+<form action="/auth/loginProcess" method="POST">
 <div class="form-group">
     <label class="form-label mt-4">뮤지컬 커뮤니티 로그인</label>
     <div class="form-floating mb-3">
@@ -31,12 +30,14 @@
 <!--        <label for="floatingPassword">Password</label>-->
     </div>
     <div class="find-btn">
+    <button id="btn-login" class="btn btn-primary">로그인</button>
     <a href="https://kauth.kakao.com/oauth/authorize?client_id=97b71fb1173796d82ab79fcc59b40a7b&redirect_uri
     =http://localhost:8083/auth/kakao/callbacktest&response_type=code">
-        <img src="/image/kakao_login_button.png" class="kakaoBtn"></a>
-    <a href="/oauth2/authorization/naver"><img src="/image/naver_login_button.png" class="naverBtn" style="width: 200px;"></a>
+        <img src="/image/kakao_login_button.png" class="kakaoBtn" style="width: 76px;"></a>
+    <a href="/oauth2/authorization/naver"><img src="/image/naver_login_button.png" class="naverBtn" style="width: 105px;"></a>
     </div>
 </div>
 </form>
 </body>
+<footer th:replace="/fragments/footer.html :: footerFragment"></footer>
 </html>

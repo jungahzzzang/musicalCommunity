@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+
+*{
+	font-family: "Galmuri11";
+}
+
+/* footer 하단 고정 [S] */
+html {
+    height: 100%;
+}
+
+body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.text-primary {
+	font-size: 30px;
+}
+
+.text-info {
+	font-size: 150px;
+}
+
+/* #body-wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+#body-content {
+    margin-top: 100px;
+    padding-bottom: 99999px; footer의 높이
+} */
+
+.content {
+	position: absolute;
+	top: 50%;
+	left: 40%;
+	margin: -150px 0 0 -150px;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+/* footer 하단 고정 [E] */

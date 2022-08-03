@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="~{fragments/layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+	<header th:replace="/fragments/header.html :: headerFragment"></header>
+	<title>메인 페이지</title>
 </head>
 <body>
-    <h2>뮤지컬 커뮤니티!안녕하세요!</h2>
+	<nav th:replace="/fragments/nav.html :: navFragment"></nav>
+	<!-- 페이지 소스 -->
+	<div class="content">
+		<p class="text-primary">머글들은 모르는 뮤덕들의 공간</p>
+		<p class="text-info">Muggle</p>
+	</div>
+	
+	
 </body>
+<footer th:replace="/fragments/footer.html :: footerFragment"></footer>
 </html>

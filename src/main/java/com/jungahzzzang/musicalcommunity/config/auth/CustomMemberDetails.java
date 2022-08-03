@@ -1,5 +1,6 @@
-package com.jungahzzzang.musicalcommunity.member.service;
+package com.jungahzzzang.musicalcommunity.config.auth;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -9,34 +10,44 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.jungahzzzang.musicalcommunity.member.domain.Member;
 
-public class CustomUserDetails implements UserDetails{
+import lombok.Data;
+
+@Data
+public class CustomMemberDetails implements UserDetails{
 	
-	private String email;
+	private Member member;
 	
-	private String password;
-	
-	private String auth;
-	
-	public CustomUserDetails(Member member) {
-		this.email = member.getEmail();
-		this.password = member.getPassword();
-		this.auth = "ROLE_"+member.getRole();
+	public CustomMemberDetails(Member member) {
+		
+		this.member=member;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
-		return Collections.singletonList(new SimpleGrantedAuthority(this.auth));
+		Collection<GrantedAuthority> collectors = new ArrayList<>();
+		//collectors.add(new GrantedAuthority() {
+			
+			//@Override
+			//public String getAuthority() {
+				//스프링에서 ROLE을 받을 때 규칙임. ROLE_ 꼭 넣어줘야함.
+				//return "ROLE_"+user.getRole();
+			//}
+		//});
+		
+		collectors.add(()->{return "ROLE_"+member.getRole();});
+		
+		return collectors;
 	}
 
 	@Override
 	public String getPassword() {
-		return this.password;
+		return member.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return this.email;
+		return member.getName();
 	}
 
 	@Override

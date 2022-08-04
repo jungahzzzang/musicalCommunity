@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>작품 목록</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css"
-          integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">
+	<header th:replace="/fragments/header.html :: headerFragment"></header>
+    <title>작품 정보</title>
 </head>
 <body>
+<nav th:replace="/fragments/nav.html :: navFragment"></nav>
 	<h1 class="mt-4">뮤지컬 정보</h1>
 
         <div class="form-group">
             <label>제목</label>
-            <input type="text" class="form-control" name="title" th:value="${dto.fcltynm}" readonly>
+            <input type="text" class="form-control" name="title" th:value="${dto.prfnm}" readonly>
         </div>
         <div class="form-group">
             <label>Review Count</label>
@@ -20,5 +20,9 @@
             <label>Avg</label>
            <!--  <input type="text" class="form-control" name="title" th:value="${dto.avg}" readonly> -->
         </div>
+        <div class="form-group">
+        	<img th:src= "${dto.poster}" />
+        </div>
 </body>
+<footer th:replace="/fragments/footer.html :: footerFragment"></footer>
 </html>

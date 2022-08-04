@@ -30,12 +30,20 @@ public class MusicalServiceImpl implements  MusicalService{
     }
 
     @Override
-    public PageResultDTO<MusicalDTO,Object[]> getList(PageRequestDTO requestDTO){
+    public PageResultDTO<MusicalDTO,Object[]> getIngList(PageRequestDTO requestDTO){
         Pageable pageable = requestDTO.getPageable(Sort.by("mcode").descending());
-        Page<Object[]> result = musicalRepository.getListPage(pageable);
+        Page<Object[]> result = musicalRepository.getIngListPage(pageable);
 
         return new PageResultDTO<>(result);
     }
+    
+    @Override
+	public PageResultDTO<MusicalDTO, Object[]> getExpecList(PageRequestDTO requestDTO) {
+		Pageable pageable = requestDTO.getPageable(Sort.by("mcode").descending());
+        Page<Object[]> result = musicalRepository.getExpecListPage(pageable);
+        
+        return new PageResultDTO<>(result);
+	}
 
 	@Override
 	public MusicalDTO getMusical(Long mcode) {
@@ -47,4 +55,6 @@ public class MusicalServiceImpl implements  MusicalService{
 		
 		return entitiesToDTO(musical);
 	}
+
+	
 }

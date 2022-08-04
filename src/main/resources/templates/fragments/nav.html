@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<header th:replace="/fragments/header.html :: headerFragment"></header>
+</head>
 	<div th:fragment="navFragment">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
@@ -10,11 +13,17 @@
        
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
+      
+      	<!-- 로그인 했을 때 -->
       	<th:block th:if="${#authorization?.expr('isAuthenticated()')}">
-        <h2 th:text="${#authentication?.name}">님 환영합니다!</h2>
-        	<a href="/logout">로그아웃</a>
+      	<li class="nav-item">
+        <p class="text-success" th:text="${#authentication?.name}+'님 환영합니다!'"></p>
+        <a href="/logout">로그아웃</a>
         	<!-- <a href="/logout" th:href="@{/logout}">로그아웃</a> -->
+        </li>
     	</th:block>
+    	
+    	<!-- 로그인 안 했을 때 -->
     	<th:block th:unless="${#authorization?.expr('isAuthenticated()')}">
     	<li class="nav-item">
         	<a class="nav-link" href="/auth/loginForm">로그인</a>
@@ -23,9 +32,18 @@
           <a class="nav-link" href="/auth/joinForm">회원가입</a>
         </li>
         </th:block>
-        <li class="nav-item">
-          <a class="nav-link" href="/musical/list">공연 목록</a>
-        </li>
+        
+        <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">공연목록</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/musical/ingList">공연중</a>
+            <a class="dropdown-item" href="/musical/expecList">공연예정</a>
+            <a class="dropdown-item" href="#">공연통계</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+         </div>
+       </li>
+       
         <li class="nav-item">
           <a class="nav-link" href="#">공연 후기</a>
         </li>
@@ -41,4 +59,10 @@
   </div>
 </nav>
 	</div>
+	
+	<script>
+    	$(document).ready(function() {
+        	$(".dropdown-toggle").dropdown();
+    	});
+    </script>
 </html>

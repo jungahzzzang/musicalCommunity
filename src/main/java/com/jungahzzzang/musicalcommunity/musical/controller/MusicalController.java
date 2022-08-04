@@ -40,10 +40,16 @@ public class MusicalController {
     	return "index";
     }
     
-    @GetMapping("/musical/list")
-    public void list(Model model, PageRequestDTO pageRequestDTO, Musical musical){
+    @GetMapping("/musical/ingList")
+    public void ingList(Model model, PageRequestDTO pageRequestDTO, Musical musical){
 
-        model.addAttribute("result",musicalService.getList(pageRequestDTO));
+        model.addAttribute("result",musicalService.getIngList(pageRequestDTO));
+    }
+    
+    @GetMapping("/musical/expecList")
+    public void expecList(Model model, PageRequestDTO pageRequestDTO, Musical musical){
+
+        model.addAttribute("result",musicalService.getExpecList(pageRequestDTO));
     }
     
     @GetMapping("/musical/read")

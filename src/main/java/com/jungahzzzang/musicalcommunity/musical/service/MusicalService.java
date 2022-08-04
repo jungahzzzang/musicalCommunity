@@ -13,8 +13,11 @@ public interface MusicalService {
 	
     public void insertMusical();
     
-    //목록 처리
-    public PageResultDTO<MusicalDTO,Object[]> getList(PageRequestDTO requestDTO);
+    //상영중 공연 목록 처리
+    public PageResultDTO<MusicalDTO,Object[]> getIngList(PageRequestDTO requestDTO);
+    
+    //상영 예정 공연 목록 처리
+    public PageResultDTO<MusicalDTO, Object[]> getExpecList(PageRequestDTO requestDTO);
     
     //조회 처리
     MusicalDTO getMusical(Long mcode);

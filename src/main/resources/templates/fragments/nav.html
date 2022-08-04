@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<div th:fragment="navFragment">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/musical/">Muggle</a>
+    <a class="navbar-brand" href="/">Muggle</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
        
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
-      	<th:block th:if="${#authorization.expr('isAuthenticated()')}">
-        <h2 th:text="${#authentication.name}">님 환영합니다!</h2>
-        	<a href="/logout" th:href="@{/logout}">로그아웃</a>
-    	</th:block>>
-    	<th:block th:unless="${#authorization.expr('isAuthenticated()')}">
+      	<th:block th:if="${#authorization?.expr('isAuthenticated()')}">
+        <h2 th:text="${#authentication?.name}">님 환영합니다!</h2>
+        	<a href="/logout">로그아웃</a>
+        	<!-- <a href="/logout" th:href="@{/logout}">로그아웃</a> -->
+    	</th:block>
+    	<th:block th:unless="${#authorization?.expr('isAuthenticated()')}">
     	<li class="nav-item">
         	<a class="nav-link" href="/auth/loginForm">로그인</a>
         </li>

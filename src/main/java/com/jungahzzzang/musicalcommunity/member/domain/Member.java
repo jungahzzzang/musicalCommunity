@@ -1,28 +1,30 @@
 package com.jungahzzzang.musicalcommunity.member.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.security.Timestamp;
+import java.io.Serializable;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.CreationTimestamp;
-
+@Data
 @Getter
 @NoArgsConstructor
+@Builder
 @Entity
 @Setter
-public class Member {
+public class Member implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long mberId;
 
     @Column(nullable = false)
-    private String name;
+    private String username;
 
     @Column(nullable = false, length = 100)
     private String password;
@@ -35,9 +37,9 @@ public class Member {
     private Role role;
 
     @Builder
-    public Member(Long mberId, String name, String email, String password, Role role){
+    public Member(Long mberId, String username, String email, String password, Role role){
         this.mberId = mberId;
-        this.name = name;
+        this.username = username;
         this.email = email;
         this.password=password;
         this.role = role;

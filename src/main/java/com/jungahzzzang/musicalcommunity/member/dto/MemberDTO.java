@@ -26,7 +26,7 @@ public class MemberDTO {
 	
 	@NotBlank(message = "아이디는 필수 입력값입니다.")
 	@Pattern(regexp = "^[a-z0-9]{4,20}$", message = "아이디는 영어 소문자와 숫자만 사용하여 4~20자리여야 합니다.")
-	private String name;
+	private String username;
 	
 	@NotBlank(message = "이메일은 필수 입력값입니다.")
 	@Email(message = "이메일 형식이 올바르지 않습니다.")
@@ -44,7 +44,7 @@ public class MemberDTO {
 	
 	public Member dtoToEntity() {
 		Member member = Member.builder()
-				.name(name)
+				.username(username)
 				.email(email)
 				.password(password)
 				.role(role)

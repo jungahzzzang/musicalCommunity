@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 public class MemberSessionDTO implements Serializable{
 
-	private String name;
+	private String username;
 	
 	private String password;
 	
@@ -19,7 +19,7 @@ public class MemberSessionDTO implements Serializable{
 	private Role role;
 	
 	public void sessionToDTO(Member member) {
-		this.name=member.getName();
+		this.username=member.getUsername();
 		this.password=member.getPassword();
 		this.email=member.getEmail();
 		this.role=member.getRole();

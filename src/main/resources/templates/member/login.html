@@ -18,23 +18,27 @@
     </style>
 </head>
 <body>
-<form action="/auth/loginProcess" method="POST">
+<form action="/auth/loginProcess" method="post">
 <div class="form-group">
     <label class="form-label mt-4">뮤지컬 커뮤니티 로그인</label>
     <div class="form-floating mb-3">
-        이메일 : <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        아이디 : <input type="text" class="form-control" id="username" name="username" placeholder="Enter name">
 <!--        <label for="floatingInput">Email address</label>-->
     </div>
     <div class="form-floating">
-        비밀번호 : <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        비밀번호 : <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
 <!--        <label for="floatingPassword">Password</label>-->
     </div>
     <div class="find-btn">
-    <button id="btn-login" class="btn btn-primary">로그인</button>
+    <button type="submit" id="btn-login" class="btn btn-primary">로그인</button>
     <a href="https://kauth.kakao.com/oauth/authorize?client_id=97b71fb1173796d82ab79fcc59b40a7b&redirect_uri
     =http://localhost:8083/auth/kakao/callbacktest&response_type=code">
         <img src="/image/kakao_login_button.png" class="kakaoBtn" style="width: 76px;"></a>
     <a href="/oauth2/authorization/naver"><img src="/image/naver_login_button.png" class="naverBtn" style="width: 105px;"></a>
+    </div>
+    <div class="loginFail">
+    	[[${error}]]
+    	[[${exception}]]
     </div>
 </div>
 </form>

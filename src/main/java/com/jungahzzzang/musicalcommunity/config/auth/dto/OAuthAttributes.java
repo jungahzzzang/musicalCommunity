@@ -12,14 +12,14 @@ public class OAuthAttributes {
 
     private Map<String,Object> attributes;
     private String nameAttributeKey;
-    private String name;
+    private String username;
     private String email;
 
     @Builder
-    public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String name, String email){
+    public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String username, String email){
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
-        this.name = name;
+        this.username = username;
         this.email = email;
     }
 
@@ -37,7 +37,7 @@ public class OAuthAttributes {
         //Map<String, Object> response = (Map<String, Object>) attributes.get("kakao_account");
 
         return OAuthAttributes.builder()
-                .name((String)attributes.get("nickname"))
+                .username((String)attributes.get("nickname"))
                 .email((String)attributes.get("email"))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
@@ -48,7 +48,7 @@ public class OAuthAttributes {
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
 
         return OAuthAttributes.builder()
-                .name((String)attributes.get("name"))
+                .username((String)attributes.get("username"))
                 .email((String)attributes.get("email"))
                 .attributes(response)
                 .nameAttributeKey(userNameAttributeName)
@@ -57,7 +57,7 @@ public class OAuthAttributes {
 
     public Member toEntity() {
         return Member.builder()
-                .name(name).email(email).role(Role.USER)   //�??�� ?�� 기본 권한?�� GUEST�? 주겠?��.
+                .username(username).email(email).role(Role.USER)   //�??�� ?�� 기본 권한?�� GUEST�? 주겠?��.
                 .build();
     }
 }

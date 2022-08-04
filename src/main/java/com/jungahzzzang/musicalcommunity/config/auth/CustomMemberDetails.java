@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +16,7 @@ import lombok.Data;
 @Data
 public class CustomMemberDetails implements UserDetails{
 	
+	@Autowired
 	private Member member;
 	
 	public CustomMemberDetails(Member member) {
@@ -47,7 +49,7 @@ public class CustomMemberDetails implements UserDetails{
 
 	@Override
 	public String getUsername() {
-		return member.getName();
+		return member.getUsername();
 	}
 
 	@Override

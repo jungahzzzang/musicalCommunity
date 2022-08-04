@@ -19,15 +19,15 @@
 <div class="form-group">
         <label class="form-label mt-4">회원가입</label>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name" placeholder="name@example.com">
+            <input type="text" class="form-control" id="username" name="username" placeholder="name">
             <!--      <label for="floatingInput">Email address</label>-->
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
             <!--      <label for="floatingInput">Email address</label>-->
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="password" placeholder="password">
+            <input type="password" class="form-control" id="password" name="password" placeholder="password">
             <!--      <label for="floatingPassword">Password</label>-->
         </div>
 <!--         <div class="form-floating">
@@ -51,7 +51,7 @@
     		
     		save: function(){
     			let data = {
-    				name: $("#name").val(),
+    				username: $("#username").val(),
     				password: $("#password").val(),
     				email: $("#email").val(),
     			};
@@ -67,7 +67,7 @@
     					alert("회원가입에 실패하였습니다.");
     				}else{
     					alert("회원가입이 완료되었습니다.");
-    					location.href="/musical/";
+    					location.href="/";
     				}
     			}).fail(function(error){
     				alert(JSON.stringify(error));

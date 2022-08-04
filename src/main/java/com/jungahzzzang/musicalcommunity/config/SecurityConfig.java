@@ -5,34 +5,48 @@ import com.jungahzzzang.musicalcommunity.config.auth.CustomOAuth2UserService;
 import com.jungahzzzang.musicalcommunity.member.domain.Role;
 import com.jungahzzzang.musicalcommunity.member.service.MemberService;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
+@AllArgsConstructor
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter {
 
+	@Autowired
     private CustomMemberDetailsService customMemberDetailsService;
+	
+	@Autowired
+	private CustomOAuth2UserService customOAuth2UserService;
     
     @Bean
     @Override
-    protected AuthenticationManager authenticationManager() throws Exception {
+    public AuthenticationManager authenticationManagerBean() throws Exception {
     	// TODO Auto-generated method stub
-    	return super.authenticationManager();
+    	return super.authenticationManagerBean();
     }
     
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    public BCryptPasswordEncoder encodePWD() {
     	return new BCryptPasswordEncoder();
+    }
+    
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    	auth.userDetailsService(customMemberDetailsService).passwordEncoder(encodePWD());
     }
 
     //http 관련 인증 설정
@@ -44,16 +58,27 @@ public class SecurityConfig extends org.springframework.security.config.annotati
 		//요청이 들어올 때
 		.authorizeRequests()
 		//누구나 들어올 수 있다.
-		.antMatchers("/","/musical/**","/auth/**","/css/**","/js/**", "/image/**")
+		.antMatchers("/","/oauth2/**", "/auth/**","/css/**","/js/**", "/image/**")
 		.permitAll()
-		//다른 경우에는 인증이 필요함.
 		.anyRequest()
 		.authenticated()
+		//다른 경우에는 인증이 필요함.
+		.and()
+		.exceptionHandling()
 		.and()
 		.formLogin()
 		.loginPage("/auth/loginForm")
 		.loginProcessingUrl("/auth/loginProcess")	//스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인해준다.
+		.defaultSuccessUrl("/")
+		.and()
+		.oauth2Login()
+		.userInfoEndpoint()
+		.userService(customOAuth2UserService)
+		.and()
 		.defaultSuccessUrl("/");
+		/*
+		 * .and() .logout().permitAll() .logoutUrl(null) .logoutSuccessUrl(null);
+		 */
 
 //            http.csrf().disable()
 //					.authorizeRequests()
@@ -77,5 +102,10 @@ public class SecurityConfig extends org.springframework.security.config.annotati
 //                    .userInfoEndpoint()
 //                    .userService(customOAuth2UserService);
 //    }
+    }
+
+    @Bean
+    LoginFailHandler loginFailHandler() {
+    	return new LoginFailHandler();
     }
 }

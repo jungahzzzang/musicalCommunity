@@ -1,5 +1,6 @@
 package com.jungahzzzang.musicalcommunity.board.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,7 +39,7 @@ public class Board extends BaseEntity{
 	 * @Column(length = 50, nullable = false) private String writer;
 	 */
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY )
     private Member member;
 
     //제목과 내용을 수정할 수 있도록 메서드 추가

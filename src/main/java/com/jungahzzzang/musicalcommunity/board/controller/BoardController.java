@@ -1,10 +1,13 @@
 package com.jungahzzzang.musicalcommunity.board.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -33,19 +36,24 @@ public class BoardController {
 		return "/board/list";
 	}
 	
-	@GetMapping("/register")
-	public void register() {
+	@GetMapping("/registerForm")
+	public String register() {
 		log.info("register get...");
+		return "board/register";
 	}
 	
 	@PostMapping("/register")
-	public String registerPost(BoardDTO dto, RedirectAttributes redirectAttributes) {
-		log.info("dto...."+dto);
+	public ResponseEntity<Long> addReview(@RequestBody BoardDTO boardDTO) {
+		log.info("--------------------add POST------------------");
+		log.info("boardDTO:"+boardDTO);
+		Long postId = boardService.register(boardDTO);
+		
+		return new ResponseEntity<>(postId, HttpStatus.OK);
 		
 		//새로 추가된 글번호
-		Long postId = boardService.register(dto);
-		redirectAttributes.addFlashAttribute("msg", postId);
-		return "redirect:board/postList";
+		//Long postId = boardService.register(dto);
+		//redirectAttributes.addFlashAttribute("msg", postId);
+		//return "redirect:board/postList";
 	}
 	
 	//글 조회

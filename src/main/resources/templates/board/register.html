@@ -7,23 +7,55 @@
 	<nav th:replace="/fragments/nav.html :: navFragment"></nav>
 	
     <th:block th:fragment="content">
-        <h1 class="mt-4">GuestBook Register Page</h1>
-        <form th:action="@{/board/register}" th:method="post">
+        <h1 class="mt-4">게시글 등록</h1>
+        <!-- <form th:action="@{/board/register}" th:method="post"> -->
             <div class="form-group">
                 <label>Title</label>
                 <input type="text" class="form-control" name="title" placeholder="Enter Title">
             </div>
             <div class="form-group">
                 <label>Content</label>
-                <textarea class="form-control" rows="5" name="content"></textarea>
+                <textarea class="form-control" rows="5" name="content" id="content"></textarea>
             </div>
             <div class="form-group">
                 <label>Username</label>
-                <input type="text" class="form-control" name="username" placeholder="Enter Username">
+                <input type="text" class="form-control" name="mberId" placeholder="Enter Username">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+            <button type="button" class="btn btn-primary postSaveBtn">Save</button>
+        <!-- </form> -->
     </th:block>
 </body>
+	<script th:inline="javascript">
+	$(document).ready(function (e){
+		var inputMberId = $('input[name="mberId"]');
+		var inputContent = $('textarea[name="content"]');
+		var inputTitle = $('input[name="title"]');
+		
+		$(".postSaveBtn").click(function(){
+			var data = {content:$("#content").val(),
+						title:inputTitle.val(),
+						mberId:inputMberId.val()};
+			console.log(data);
+			$.ajax({
+				url: '/board/register',
+				type: 'POST',
+				data: JSON.stringify(data),
+				contentType: "application/json; charset=utf-8",
+				dataType: "text",
+			}).done(function (result){
+					if(result.status === 500){
+						alert("게시물 등록에 실패했습니다.");
+					}else{
+						alert("게시물 등록에 성공했습니다.")
+						console.log("result: "+result);
+	                    location.href="/board/postList";
+					}
+                    
+                }).fail(function(error){
+                	alert(JSON.stringify(error));
+                })
+		});
+	});
+	</script>
 <footer th:replace="/fragments/footer.html :: footerFragment"></footer>
 </html>

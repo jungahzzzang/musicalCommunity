@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<header th:replace="/fragments/header.html :: headerFragment"></header>
-<title>게시판 글목록</title>
+<title>게시판 글수정</title>
 </head>
 <body>
 	<nav th:replace="/fragments/nav.html :: navFragment"></nav>
     <th:block th:fragment="content">
-        <h1 class="mt-4">GuestBook Modify Page</h1>
+        <h1 class="mt-4">게시글 수정</h1>
 
         <form action="/board/modify" method="post">
             <!--페이지 번호-->
@@ -16,7 +16,7 @@
             <input type="hidden" name="keyword" th:value="${requestDTO.keyword}">
         <div class="form-group">
             <label>PostId</label>
-            <input type="text" class="form-control" name="gno" th:value="${dto.gno}" readonly>
+            <input type="text" class="form-control" name="postId" th:value="${dto.postId}" readonly>
         </div>
         <div class="form-group">
             <label>Title</label>
@@ -39,12 +39,12 @@
             <input type="text" class="form-control" th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
         </div>
 
-        <a th:href="@{/board/modify(postId=${dto.postId},page=${requestDTO.page})}">
+       <!--  <a th:href="@{/board/modify(postId=${dto.postId},page=${requestDTO.page})}">
             <button type="button" class="btn btn-primary">Modify</button>
         </a>
         <a th:href="@{/board/postList(page=${requestDTO.page})}">
             <button type="button" class="btn btn-info">List</button>
-        </a>
+        </a> -->
     </form>
     <button type="button" class="btn btn-primary modifyBtn">Modify</button>
     <button type="button" class="btn btn-info listBtn">List</button>

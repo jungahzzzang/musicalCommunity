@@ -8,10 +8,11 @@
 	<nav th:replace="/fragments/nav.html :: navFragment"></nav>
 	
 	<th:block th:fragment="content">
-        <h1>GuestBook List Page</h1>
+        <h4>뮤글들의 자유로운 소통 공간입니다</h4>
+       <!--  <i class="fa-solid fa-music"></i> -->
         <span>
-            <a th:href="@{/board/register}">
-                <button type="button" class="btn btn-outline-primary">REGISTER</button>
+            <a th:href="@{/board/registerForm}">
+                <button type="button" class="btn btn-primary">글쓰기</button>
             </a>
         </span>
 
@@ -31,8 +32,7 @@
                 </div>
                 <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
                 <div class="input-group-append" id="button-addon4">
-                    <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
-                    <button class="btn-outline-secondary btn-clear" type="button">Clear</button>
+                	<button type="button" class="btn btn-success btn-search">검색</button>
                 </div>
             </div>
         </form>
@@ -41,19 +41,18 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">PostId</th>
                     <th scope="col">Title</th>
+                    <th scope="col">Writer</th>
                     <th scope="col">Regdate</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="dto : ${result.dtoList}">
                     <th scope="row">
-                        <a th:href="@{/board/read(gno=${dto.postId},page=${result.page}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
+                        <a th:href="@{/board/read(postId=${dto.postId},page=${result.page}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">
                             [[${dto.postId}]]
                         </a>
                     </th>
-                    <th scope="row">[[${dto.postId}]]</th>
                     <td>[[${dto.title}]]</td>
                     <td>[[${dto.username}]]</td>
                     <td>[[${#temporals.format(dto.regDate,'yyyy/MM/dd')}]]</td>

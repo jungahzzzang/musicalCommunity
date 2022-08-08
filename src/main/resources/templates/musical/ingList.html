@@ -12,23 +12,23 @@
 </form>
 <table class="table table-hover">
     <thead>
-    <tr class="table-secondary">
-        <th scope="col">#</th>
-        <th scope="col">공연명</th>
-        <th scope="col">공연장</th>
-        <th scope="col">공연 상태</th>
+    <tr class="table-active">
+        <th scope="row">#</th>
+        <th scope="row">공연명</th>
+        <th scope="row">공연장</th>
+        <th scope="row">공연 상태</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="dto : ${result.dtoList}" class="table-light">
-        <th scope="row">
+    <tr th:each="dto : ${result.dtoList}">
+        <th scope="col">
            <a th:href="@{/musical/read(mcode = ${dto.mcode},page=${result.page})}">
             [[${dto.mcode}]]
            </a>
         </th>
-        <td>[[${dto.prfnm}]]</td>
-        <td>[[${dto.fcltynm}]]</td>
-        <td>[[${dto.prfstate}]]</td>
+        <td scope="col">[[${dto.prfnm}]]</td>
+        <td scope="col">[[${dto.fcltynm}]]</td>
+        <td scope="col">[[${dto.prfstate}]]</td>
     </tr>
     </tbody>
 </table>
